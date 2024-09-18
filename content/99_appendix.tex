@@ -1,0 +1,22 @@
+\appendix
+\section{Anhang}
+\label{Code Appendix}
+
+\subsection{Script to Search for GitHub Repositories}
+\label{Script to search for GitHub repositories}
+\autoref{Python script so search for GitHub repositories} is used to search on GitHub for repositories matching the keywords provided by the user.
+In comparison to a manual search, this script offers several advantages.
+Firstly, the output includes all repositories found, and secondly, the output produces a link to the repository, which can then be used for further processing.
+We developed this script by making use of the capabilities of ChatGPT 3.5, a sophisticated large language model \cite{openai_chatgpt_2024}.
+\lstinputlisting[language=Python, caption=Python script so search for GitHub repositories, label=Python script so search for GitHub repositories]{git_search.py}
+
+
+\newpage
+\subsection{Script to Process Output Produced by RestTestGen}
+\label{Script to process output produced by RestTestGen}
+Since RestTestGen generates a \ac{JSON} file for every request sent, we need to search through these files to identify any errors found by RestTestGen.
+To automate this process, we developed a Python script shown in \autoref{Python script to search inside RestTestGen output folder for found errors}.
+The script takes two parameters: the directory containing the \ac{JSON} files and the search term to look for within these files.
+To search for errors in the files, we use the search term "FAIL".
+We developed this script by making use of the capabilities of ChatGPT 3.5, a sophisticated large language model \cite{openai_chatgpt_2024}.
+\lstinputlisting[language=Python, caption=Python script to search inside RestTestGen output folder for found errors, label=Python script to search inside RestTestGen output folder for found errors]{string_search.py}

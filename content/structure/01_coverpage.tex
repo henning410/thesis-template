@@ -1,0 +1,34 @@
+\begin{titlepage}
+    \centering
+    \Large
+    \vlinespace{4}
+    \huge
+    \textbf{\thesistitle} \\
+    \vlinespace{4}
+
+    \Large
+    \thesistype \\
+    \ifthenelse{\equal{\thesisLanguage}{english}}{%
+        by\\
+    }{%
+        von\\
+    }
+    \Large
+    \student
+    \vlinespace{7}
+    \ifthenelse{\equal{\thesisLanguage}{english}}{%
+
+        Course of Studies: \course \\
+        Faculty: \faculty\\
+    }{%
+
+        Studiengang: \course \\
+        Fakultät: \faculty\\
+    }
+    \hsname\\
+
+    %\vlinespace{2}
+
+    \vfill
+
+\end{titlepage}

@@ -1,0 +1,35 @@
+\ifthenelse{\equal{\thesisLanguage}{english}}{%
+    \phantomsection\section*{Confidentiality Clause}
+}{%
+    \phantomsection\section*{Vertraulichkeitsklausel}
+}
+
+\ifthenelse{\equal{\thesisLanguage}{english}}{%
+    By request of the company \company, the contents of this thesis — including any related data or drawings — are subject to confidentiality up to and including <<Month/Year>>.
+    No copies or transcripts may be created, digitally or manually.
+    Exceptions to this clause require written permission by the company \company.
+}{%
+    Auf Wunsch der Firma Musterfirma GmbH unterliegt der Inhalt dieser Arbeit - einschließlich der dazugehörigen Daten und Zeichnungen - bis einschließlich „Monat/Jahr“ der Geheimhaltung.
+    Es dürfen keine Kopien oder Abschriften erstellt werden, weder digital noch manuell.
+    Ausnahmen von dieser Regelung bedürfen der schriftlichen Genehmigung der Firma Musterfirma GmbH.
+}
+\signature{\location}
+\\\vspace{5ex}
+
+\ifthenelse{\equal{\thesisLanguage}{english}}{%
+    \noindent The prohibition on publishing this thesis is supported by:
+}{%
+    \noindent Das Verbot der Veröffentlichung dieser Arbeit wird unterstützt durch:
+}
+\\\vspace{5ex}
+
+\noindent\begin{tabular}{lr}
+    \reviewer, \today & \makebox[2.5in]{\hrulefill} \\
+                      & \hspace{1pt}
+    \ifthenelse{\equal{\thesisLanguage}{english}}{%
+        Signature
+    }{%
+        Unterschrift
+    }
+\end{tabular}
+\\\vspace{5ex}

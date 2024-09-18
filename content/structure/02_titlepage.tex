@@ -1,0 +1,67 @@
+\begin{titlepage}
+    \ifthenelse{\equal{\companylogo}{}}{%
+        \hfill \includegraphics[height=1.3cm]{\hslogo}
+    }{
+        \includegraphics[height=1.3cm]{\companylogo} \hfill \includegraphics[height=1.3cm]{\hslogo}
+    }
+    \centering
+    \Large
+    \vfill
+    \huge
+    \vlinespace{2}
+    \textbf{\thesistitle} \\
+    \vlinespace{2}
+    \Large
+    \thesistype \\
+    \ifthenelse{\equal{\thesisLanguage}{english}}{%
+        by\\
+    }{%
+        von\\
+    }
+    \Large
+    \student
+    \vlinespace{3}
+
+    \vlinespace{2}
+    \ifthenelse{\equal{\thesisLanguage}{english}}{%
+        Course of Studies: \course \\
+        Faculty: \faculty\\
+    }{%
+        Studiengang: \course \\
+        Fakultät: \faculty\\
+    }
+    \hsname\\
+
+    \vlinespace{4}
+
+    \vfill
+    \raggedright
+    \large
+    \ifthenelse{\equal{\thesisLanguage}{english}}{%
+        \titleemph{Period:} \period \\
+        \titleemph{Reviewer:} \reviewer \\
+        \titleemph{Second Reviewer:} \secondReviewer \\
+    }{%
+        \titleemph{Zeitraum:} \period \\
+        \titleemph{Erstprüfer:} \reviewer \\
+        \titleemph{Zweitprüfer:} \secondReviewer \\
+    }
+
+
+    % Folgenden Abschnitt nur bei Industrie-Arbeiten darstellen
+    \ifthenelse{\equal{\company}{}}{%
+        % \HRule{13pt}{1pt}
+    }{%
+        % If \company is not empty, check thesis language
+        \vlinespace{1}
+        \HRule{13pt}{1pt} \\
+        \ifthenelse{\equal{\thesisLanguage}{english}}{%
+            \titleemph{Company:} \company \\
+            \titleemph{Supervisor:} \supervisor
+        }{%
+            \titleemph{Firma:} \company \\
+            \titleemph{Betreuer:} \supervisor
+        }
+    }
+
+\end{titlepage}

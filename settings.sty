@@ -1,0 +1,222 @@
+\ProvidesPackage{settings}[Copyright: Henning Weise 2021]
+\usepackage[utf8]{inputenc} %for utf-8 support
+\usepackage{graphicx} %for more arguemnts to \includegraphics
+\graphicspath{ {images/} } %seeting the path for all images
+%\usepackage{tocbibind} %Automatically adds the bibliography, etc., to the Table of Contents listing
+\usepackage[english]{babel}
+\usepackage{titlesec}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{ragged2e}
+\usepackage{mathptmx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes.multipart,shapes, calc}
+\usepackage[hypcap=true]{caption}
+\usepackage[a4paper, left=3cm, right=2.5cm, top=2.5cm, bottom=2cm]{geometry} %basic layout of page
+%\usepackage[printonlyused]{acronym}  %list of abbreviations
+\usepackage{acro}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{supertabular}
+\usepackage{setspace}
+\setstretch{1}
+\usepackage{amsmath}
+
+\usepackage{pifont} % für Haken und Kreuz Symbole
+\usepackage{dirtree} % für Verzeichnisbäume
+
+\usepackage{tabularray}
+
+\AddToHook{cmd/section/before}{\clearpage}  % with this command, before every section a newpage is added
+
+\usepackage{xargs}  % Use more than one optional parameter in a new commands
+\usepackage{etoolbox}
+
+\usepackage{color, colortbl}
+
+% Load todo package.
+\usepackage[colorinlistoftodos,prependcaption,textsize=small]{todonotes}
+\setlength {\marginparwidth }{2cm} 
+
+\newcommandx{\toDo}[1]{\ifshowtodos\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,inline]{ToDo: #1}\noindent\fi}
+\newcommandx{\improvement}[1]{\ifshowtodos\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,inline]{Improvement: #1}\noindent\fi}
+\newcommandx{\approve}{\ifshowtodos\todo[linecolor=gray,backgroundcolor=gray!25,bordercolor=gray,inline]{Waiting for approval}\noindent\fi}
+\newcommandx{\approved}{\ifshowtodos\todo[linecolor=green,backgroundcolor=green!25,bordercolor=green,inline]{Approved}\noindent\fi}
+
+%\newcommandx{\approved}{\ifshowtodos\todo[nolist,linecolor=green,backgroundcolor=green!25,bordercolor=green,inline]{Approved}\noindent\fi}
+
+%package for bibliography, here you can switch your cite style
+\usepackage{csquotes}
+\usepackage[
+    backend=biber,
+    sortcites,
+    %   style=iso-authoryear,
+    %   citestyle=authoryear,
+    style=numeric,
+    citestyle=numeric,
+    abbreviate=false,
+    autocite=footnote,
+    maxcitenames=3
+]{biblatex}
+\addbibresource{references.bib}
+\DeclareNameAlias{default}{family-given/given-family}
+%\DeclareLanguageMapping{german}{german-apa}
+\DefineBibliographyStrings{english}{
+    andothers = {et\addabbrvspace al\adddot},
+}
+\renewcommand*{\multinamedelim}{\addcomma\space}
+\renewcommand*{\finalnamedelim}{\addspace\bibstring{and}\addspace}
+
+% for better urk's in bibliography
+\usepackage{url}
+
+%for link in TOC
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage{cleveref}
+\usepackage{enumitem}
+
+\addto\extrasenglish{ 	\renewcommand{\sectionautorefname}{Section} 	\let\subsectionautorefname\sectionautorefname 	\let\subsubsectionautorefname\sectionautorefname }
+
+%for better linebreaks in url's in bibliography
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\usepackage{makecell} %for newline inside tables
+
+\usepackage{microtype} %damit bessere Umbrüche gemacht werden können
+
+% Define a boolean variable to control whether todos are displayed
+\newif\ifshowtodos
+\showtodostrue % Set it to true by default
+
+%Provides control over the typography of the Table of Contents, List of Figures and List of Tables
+\usepackage{tocloft}
+
+%settings for image in right top corner
+\usepackage[T1]{fontenc}
+\usepackage{eso-pic}
+\newcommand\AtPageUpperRight[1]{\AtPageUpperLeft{%
+        \makebox[\paperwidth][r]{#1}}}
+
+%Package for section numbers in front of items in List of Figures  
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+\newcommand{\signature}[1]{
+    \\\vspace{5ex}
+
+    \noindent\begin{tabular}{lr}
+        #1, \today & \makebox[2.5in]{\hrulefill} \\
+                   & \hspace{1pt}
+        \ifthenelse{\equal{\thesisLanguage}{english}}{%
+            Signature of the author
+        }{%
+            Unterschrift des Autors
+        }
+    \end{tabular}
+}
+
+
+% ------------- Code settings --------------------
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\algdef{SE}[SUBALG]{Indent}{EndIndent}{}{\algorithmicend\ }%
+\algtext*{Indent}
+\algtext*{EndIndent}
+\algnewcommand\algorithmicforeach{\textbf{for each}}
+\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+\newcommand{\algorithmautorefname}{Algorithm}
+
+%package for code listing and colors
+\usepackage{listings}
+\usepackage{xcolor}
+%set default folder for Code
+\newcommand*\lstinputpath[1]{\lstset{inputpath=#1}}
+\lstinputpath{code}
+
+%Define Colors for Code to look better
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{RGB}{75, 75, 77}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\definecolor{darkgreen}{RGB}{37, 105, 4}
+\definecolor{yellow}{RGB}{166, 149, 2}
+\definecolor{blue}{RGB}{2, 21, 166}
+\definecolor{orange}{RGB}{171, 71, 0}
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+    basicstyle=\scriptsize\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+}
+
+%------------  Define new Code Language  --------------------
+\lstdefinelanguage{JavaScript}{
+    stringstyle=\color{darkgreen}\ttfamily,
+    identifierstyle=\color{black},
+}
+
+
+\lstdefinelanguage{docker}{
+    keywordstyle=\color{blue}\bfseries,
+    identifierstyle=\color{black},
+    sensitive=false,
+}
+
+\lstdefinelanguage{YAML}{
+    keywordstyle=\color{blue}\bfseries,
+    identifierstyle=\color{black},
+    sensitive=false,
+}
+
+%------------  Define new Code Language  --------------------
+\lstdefinelanguage{Java}{
+    keywords=[1]{newBuilder, setEnableSpeakerDiarization, setEncoding, setLanguageCode, setDiarizationConfig, setAudioChannelCount, build, setUri, longRunningRecognizeAsync, get, getResultsList, toJson, ApiClient, RevAiJobOptions, setMetadata, setLanguage, submitJobLocalFile, transcribe},
+    keywordstyle=[1]\color{blue}\bfseries,
+    keywords=[2]{class, export, boolean, throw, implements, import, this, return, await, async, export, extends, super, constructor, const, true, new, void, throw},
+    keywordstyle=[2]\color{purple}\bfseries,
+    keywords=[3]{diarizationConfig, config, audio, response, results},
+    keywordstyle=[3]\color{orange}\bfseries,
+    % Define all kinds of comments and color for them
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    commentstyle=\color{darkgray}\ttfamily,
+    % This is to get yellow color for everything between < and >
+    morecomment=[s][\color{yellow}\bfseries]{<}{>},
+    morecomment=[s][\color{darkgreen}\bfseries]{"}{"},
+    stringstyle=\color{darkgreen}\ttfamily,
+    identifierstyle=\color{black},
+    sensitive=true,
+}
+
+\lstset{
+    backgroundcolor=\color{lightgray},
+    extendedchars=true,
+    basicstyle=\scriptsize\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    showstringspaces=false,
+    showspaces=false,
+    numbersep=7pt,
+    tabsize=1,
+    breaklines=true,
+    showtabs=true,
+    captionpos=b,
+    floatplacement=t
+}
+\endinput
+
